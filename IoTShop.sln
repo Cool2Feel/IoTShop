@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{E0E9AF79-C114-4DCA-AFCA-049709E45F7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{C9DBCA3B-743C-4904-96FD-C448CAD0AC1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTShop.Server.WebApp", "IoTShop.Server.WebApp\IoTShop.Server.WebApp.csproj", "{18AB4367-CC5F-45DC-822B-CBEA5B9E412F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTShop.Common.Logic", "IoTShop.Common.Logic\IoTShop.Common.Logic.csproj", "{5165AADE-23A4-4B92-AB14-0C07E6BD5461}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTShop.Common.TestApp", "IoTShop.Common.TestApp\IoTShop.Common.TestApp.csproj", "{BC45928F-8CEE-41C1-8947-9A5B78BC1275}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTShop.Server.Api", "IoTShop.Server.Api\IoTShop.Server.Api.csproj", "{167778AD-D2EA-4C0C-865F-B71C4C12DB3A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebJobs", "WebJobs", "{7C865539-9C5E-479E-AC58-1AFD90C84407}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTShop.WebJobs.Job", "IoTShop.WebJobs.Job\IoTShop.WebJobs.Job.csproj", "{913583CC-F3B3-45F1-9FA8-E3044FA5CE12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{7FB5EEC2-6BCA-4701-B016-641A72FD3B6F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18AB4367-CC5F-45DC-822B-CBEA5B9E412F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18AB4367-CC5F-45DC-822B-CBEA5B9E412F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18AB4367-CC5F-45DC-822B-CBEA5B9E412F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18AB4367-CC5F-45DC-822B-CBEA5B9E412F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5165AADE-23A4-4B92-AB14-0C07E6BD5461}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5165AADE-23A4-4B92-AB14-0C07E6BD5461}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5165AADE-23A4-4B92-AB14-0C07E6BD5461}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5165AADE-23A4-4B92-AB14-0C07E6BD5461}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC45928F-8CEE-41C1-8947-9A5B78BC1275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC45928F-8CEE-41C1-8947-9A5B78BC1275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC45928F-8CEE-41C1-8947-9A5B78BC1275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC45928F-8CEE-41C1-8947-9A5B78BC1275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{167778AD-D2EA-4C0C-865F-B71C4C12DB3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{167778AD-D2EA-4C0C-865F-B71C4C12DB3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{167778AD-D2EA-4C0C-865F-B71C4C12DB3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{167778AD-D2EA-4C0C-865F-B71C4C12DB3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{913583CC-F3B3-45F1-9FA8-E3044FA5CE12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{913583CC-F3B3-45F1-9FA8-E3044FA5CE12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{913583CC-F3B3-45F1-9FA8-E3044FA5CE12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{913583CC-F3B3-45F1-9FA8-E3044FA5CE12}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{18AB4367-CC5F-45DC-822B-CBEA5B9E412F} = {E0E9AF79-C114-4DCA-AFCA-049709E45F7A}
+		{5165AADE-23A4-4B92-AB14-0C07E6BD5461} = {C9DBCA3B-743C-4904-96FD-C448CAD0AC1F}
+		{BC45928F-8CEE-41C1-8947-9A5B78BC1275} = {C9DBCA3B-743C-4904-96FD-C448CAD0AC1F}
+		{167778AD-D2EA-4C0C-865F-B71C4C12DB3A} = {E0E9AF79-C114-4DCA-AFCA-049709E45F7A}
+		{913583CC-F3B3-45F1-9FA8-E3044FA5CE12} = {7C865539-9C5E-479E-AC58-1AFD90C84407}
+	EndGlobalSection
+EndGlobal

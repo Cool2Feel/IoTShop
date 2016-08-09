@@ -1,0 +1,146 @@
+﻿@model IEnumerable<IoTShop.Common.Logic.Models.Device>
+
+@{
+    ViewBag.Title = "List of all devices";
+}
+
+@if (Request.IsAuthenticated)
+{
+    <p class="floating-action-button">
+        <abbr title="Create new device">
+            <a href="~/cataloog/create"><span class="fa fa-3x fa-plus"></span></a>
+        </abbr>
+    </p>
+}
+
+<div class="page-header">
+    <h1>List of all devices</h1>
+</div>
+
+@if (ViewBag.Message != null && ViewBag.Status != null)
+{
+    <div class="alert alert-@ViewBag.Status">
+
+        @if (ViewBag.Message?.ToLower() == "confirm to delete")
+        {
+            <p><b>@ViewBag.Status!</b> Are you sure to delete this device?</p>
+            <form method="post" action="~/cataloog/ConfirmDelete/@ViewBag.Id">
+                <button name="confirmd" value="yes" class="btn btn-danger">Yes</button>
+                <button name="confirmd" value="no" class="btn btn-default">No</button>
+            </form>
+        }
+        else
+        {
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <p><b>@ViewBag.Status!</b> @ViewBag.Message</p>
+        }
+    </div>
+}
+
+<ul class="thumbnails">
+    @foreach (var item in Model)
+    {
+        <li class="span6">
+            <section class="thumbnail card">
+                <div>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <form method="post" action="~/cataloog/delete/@item.ID" style="margin: 0 !important;">
+                            <button class="close" title="Delete"><span class="fa fa-trash-o"></span></button>
+                        </form>
+                        <span class="close">&nbsp;</span>
+                        <a class="close" href="~/cataloog/edit/@item.ID" title="Edit"><span class="fa fa-pencil"></span></a>
+                    }
+                    <h2 class="card-heading simple">@item.Name</h2>
+                </div>
+                <div class="card-body">
+                    <div class="device-info">
+
+                        @if (item.Picture != string.Empty && item.Picture != null)
+                        {
+                            <img src="https://iotshopstorage.blob.core.windows.net/images/@item.Picture" alt="@item.Name" style="float: left;" />
+                        }
+
+                        <p>@item.Description</p>
+
+                        <div style="width: 50%; float: left;">
+                            <p><b>Frameworks:</b></p>
+
+                            @if (item.Framework != null)
+                            {
+                                <ul>
+                                    @foreach (var fr in item.Framework)
+                                    {
+                                        <li>@fr.Name</li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <p>Unknow</p>
+                            }
+                        </div>
+
+                        <div style="width: 50%; float: left;">
+                            <p><b>OS:</b></p>
+
+                            @if (item.OS != null)
+                            {
+                                <ul>
+                                    @foreach (var os in item.OS)
+                                    {
+                                        <li>@os.Name</li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <p>Unknow</p>
+                            }
+                        </div>
+                    </div>
+
+                    <hr style="margin-top: 5px;" />
+                    <p><b>Price: €@item.Price<br />Rent price: €@item.RentPrice<br/>Stock: @item.Stock items</b></p>
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        <form action="~/Order/Order/@item.ID" method="post">
+                            <div style="display: flex;" class="">
+                                <label class="span1 control-label" for="inpAantal" style="margin: 5px 7px 5px 0;">Quantity</label>
+                                <input style="margin-left:5px;margin-right:5px;" type="number" id="inpAantal" name="quantity" class="form-control span7" required />
+                                <button style="margin-left:5px;margin-right:5px;" class="btn btn-primary span4 check-on-submit">Add to cart</button>
+                            </div>
+                            <p class="text-error">&nbsp;</p>
+                        </form>
+                    }
+                    else
+                    {
+                        <div>
+                            <p>Please log in to order this device.</p>
+                        </div>
+                    }
+                </div>
+            </section>
+        </li>
+    }
+</ul>
+
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+    $("form").submit(function (evt) {
+
+        var form = $(this);
+        var input = $("input", form).eq(0);
+
+        if (parseInt(input.val()) < 1) {
+            evt.preventDefault();
+            $("p", form).eq(0).html("The quantity must be bigger or equal to one");
+            input.addClass("error");
+        }
+        else {
+            input.removeClass("error");
+        }
+    });
+</script>

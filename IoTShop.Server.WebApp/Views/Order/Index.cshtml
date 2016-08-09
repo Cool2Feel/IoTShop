@@ -1,0 +1,36 @@
+﻿@model IEnumerable<IoTShop.Common.Logic.Models.Order>
+
+@{
+    ViewBag.Title = "Your shopping cart";
+    int count = Model.Count();
+}
+
+<section>
+    <div class="page-header">
+        <h1>Your shopping cart <small>@count items</small></h1>
+    </div>
+    
+    @if (ViewBag.Status != null && ViewBag.Message != null && ViewBag.Status != String.Empty && ViewBag.Message != String.Empty)
+    {
+        <div class="alert alert-@ViewBag.Status">
+            <p><b>@ViewBag.Status!</b> @ViewBag.Message</p>
+        </div>
+    }
+
+    @if (count > 0)
+    {
+        @Html.Partial("_ShoppingTable", Model)
+
+        <form  method="get">
+            <a href="~/order/Checkout" class="btn btn-primary">Check out</a>
+            <a href="~/cataloog/index" class="btn btn-default">Continue shopping</a>
+        </form>
+
+        <p>* Subject to changes and unplanned circumstances. If delivery takes longer than planned, please contact us.</p>
+    }
+    else
+    {
+        <p>Your shopping cart is empty</p>
+        <a href="~/cataloog/index" class="btn btn-default">Continue shopping</a>
+    }
+</section>

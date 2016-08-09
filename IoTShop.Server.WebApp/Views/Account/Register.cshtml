@@ -1,0 +1,48 @@
+﻿@model IoTShop.Server.WebApp.ViewModels.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<section>
+    <div class="page-header">
+        <h1>@ViewBag.Title.</h1>
+    </div>
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Create a new account.</h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="control-group">
+            @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(m => m.Email, new { @class = "input-xlarge form-control" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+            <div class="controls">
+                @Html.PasswordFor(m => m.Password, new { @class = "input-xlarge form-control" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+            <div class="controls">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input-xlarge form-control" })
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="offset2 controls" style="margin-bottom: 10px">
+                <input type="submit" value="Register" class="btn btn-primary btn-large btn-block" />         
+            </div>
+            <div class="offset2 controls">
+                <a class="btn btn-link" href="~/account/login">Already a account?</a>
+            </div>
+        </div>
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

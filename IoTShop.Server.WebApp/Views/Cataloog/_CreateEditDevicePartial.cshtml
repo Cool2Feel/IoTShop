@@ -1,0 +1,84 @@
+﻿@using IoTShop.Common.Logic.Models;
+
+@model IoTShop.Server.WebApp.ViewModels.CreateDeviceViewModel
+
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="control-group">
+    @Html.LabelFor(model => model.TheDevice.Name, htmlAttributes: new { @class = "control-label " })
+    <div class="controls">
+        @Html.EditorFor(model => model.TheDevice.Name, new { htmlAttributes = new { @class = "input-large form-control" } })
+        @Html.ValidationMessageFor(model => model.TheDevice.Name, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="control-group">
+    @Html.LabelFor(model => model.TheDevice.Price, htmlAttributes: new { @class = "control-label " })
+    <div class="controls">
+        @Html.EditorFor(model => model.TheDevice.Price, new { htmlAttributes = new { @class = "input-large form-control" } })
+        @Html.ValidationMessageFor(model => model.TheDevice.Price, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="control-group">
+    @Html.LabelFor(model => model.TheDevice.RentPrice, htmlAttributes: new { @class = "control-label " })
+    <div class="controls">
+        @Html.EditorFor(model => model.TheDevice.RentPrice, new { htmlAttributes = new { @class = "input-large form-control" } })
+        @Html.ValidationMessageFor(model => model.TheDevice.RentPrice, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="control-group">
+    @Html.LabelFor(model => model.TheDevice.Stock, htmlAttributes: new { @class = "control-label " })
+    <div class="controls">
+        @Html.EditorFor(model => model.TheDevice.Stock, new { htmlAttributes = new { @class = "input-large form-control" } })
+        @Html.ValidationMessageFor(model => model.TheDevice.Stock, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="control-group">
+    @Html.LabelFor(model => model.TheDevice.Picture, htmlAttributes: new { @class = "control-label " })
+    <div class="controls">
+        <input class="input-large form-control text-box single-line" id="TheDevice_Picture" name="TheDevice.Picture" type="file" value="">
+        @Html.ValidationMessageFor(model => model.TheDevice.Picture, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="control-group">
+    @Html.LabelFor(model => model.TheDevice.Description, htmlAttributes: new { @class = "control-label " })
+    <div class="controls">
+        @Html.TextAreaFor(model => model.TheDevice.Description)
+        @*<textarea id="TheDevice_Description" name="TheDevice.Description" rows="5" cols="20"></textarea>*@
+        @Html.ValidationMessageFor(model => model.TheDevice.Description, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="control-group ">
+    <label class="control-label" for="optFrameworks">Frameworks</label>
+    <div>
+        @Html.ListBoxFor(model => model.SelectedFrameworks, Model.AllFrameworks)
+        @*<select id="optFrameworks" name="SelectedFrameworks" class="input-large form-control" multiple>
+            @foreach (Framework fr in Model.AllFrameworks)
+            {
+                <option value="@fr.ID">@fr.Name</option>
+            }
+        </select>*@
+        <p class="offset2" style="margin-top: 5px">Pers <kbd>ctrl</kbd> to select multiple items.</p>
+    </div>
+</div>
+
+<div class="control-group ">
+    <label class="control-label" for="optOss">Operating systems</label>
+    <div>
+        @Html.ListBoxFor(model => model.SelectedOSs, Model.AllOSs)
+        @*<select id="optOss" name="SelectedOSs" class="input-large form-control" multiple>
+            @foreach (OS os in Model.AllOSs)
+            {
+                <option value="@os.ID">@os.Name</option>
+            }
+        </select>*@
+        <p class="offset2" style="margin-top: 5px">Pers <kbd>ctrl</kbd> to select multiple items.</p>
+
+    </div>
+</div>

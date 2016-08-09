@@ -1,0 +1,27 @@
+﻿@model IoTShop.Server.WebApp.ViewModels.CreateDeviceViewModel
+
+<section>
+    <div class="page-header">
+        <h1>Edit @Model.TheDevice.Name</h1>
+    </div>
+
+    <form method="post" action="~/cataloog/edit/@Model.TheDevice.ID">
+        <div class="form-horizontal">
+            @Html.AntiForgeryToken()
+            @Html.Partial("_CreateEditDevicePartial", Model);
+
+            <div class="control-group">
+                <div class="offset2 ">
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                    <a href="~/cataloog/index" class="btn btn-default">Back to list</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

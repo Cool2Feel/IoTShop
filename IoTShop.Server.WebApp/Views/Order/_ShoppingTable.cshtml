@@ -1,0 +1,103 @@
+﻿@model IEnumerable<IoTShop.Common.Logic.Models.Order>
+
+<table class="table">
+    <tr>
+        <th>#</th>
+        <th colspan="2">
+            @Html.DisplayNameFor(model => model.Device.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Device.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>Subtotal</th>
+        <th></th>
+    </tr>
+
+    @{
+        decimal total = 0;
+        int number = 1;
+    }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@(number++)</td>
+            <td style="width: 19%;">
+                @if (item.Device.Picture != string.Empty && item.Device.Picture != null)
+                {
+                    <img src="https://iotshopstorage.blob.core.windows.net/images/@item.Device.Picture" alt="@item.Device.Name" style="float: left; height: 100px; margin-right: 10px;" />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Device.Name)
+            </td>
+            <td>
+                €@Html.DisplayFor(modelItem => item.Device.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @{
+                    if (item.OrderLine == null)
+                    {
+                        total += (item.Device.Price * item.Quantity);
+
+                        <text>
+                            <p>€@(item.Device.Price * item.Quantity)</p>
+                        </text>
+                    }
+                    else
+                    {
+                        <text>
+                            <p><span class="label label-success">Paid</span><p>
+                            <p style="text-decoration: line-through">€@(item.Device.Price * item.Quantity)</p>
+                        </text>
+                    }
+                }
+            </td>
+            <td>
+                @{
+                    if (item.OrderLine == null)
+                    {
+                        <text>
+                            <form method="post" action="~/order/Remove/@(item.ID)">
+                                <button class="btn-default btn">Remove</button>
+                            </form>
+                        </text>
+                    }
+                    else
+                    {
+                        int days = (item.OrderLine.Date.Date.AddDays(3) - DateTime.Now.Date).Days;
+
+                        if (days > 0)
+                        {
+                            <text>
+                                <p><span class="label label-success">Shipping</span><p>
+                                <p>Delivery in ~@(days) days*</p>
+                            </text>        
+                        }
+                        else
+                        {
+                            <text>
+                                <p><span class="label label-success">Shipping</span><p>
+                                <p>Delivery asap*</p>
+                            </text>
+                        }
+                    }
+                }
+            </td>
+        </tr>
+    }
+
+    <tr>
+        <td colspan="5"></td>
+        <td><b>Total price:<br />€@total</b></td>
+        <td></td>
+    </tr>
+
+</table>
+

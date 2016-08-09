@@ -1,0 +1,29 @@
+﻿@model IoTShop.Server.WebApp.ViewModels.CreateDeviceViewModel
+
+@{
+    ViewBag.Title = "Create new device";
+}
+
+<section>
+    <h1>Create new device</h1>
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
+            @Html.AntiForgeryToken()
+            @Html.Partial("_CreateEditDevicePartial", Model);
+
+            <div class="control-group">
+                <div class="offset2 ">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <a href="~/cataloog/index" class="btn btn-default">Back to list</a>
+                </div>
+            </div>
+        </div>
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
