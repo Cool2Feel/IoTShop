@@ -3,7 +3,7 @@ namespace IoTShop.Common.Logic.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitDb : DbMigration
+    public partial class initdb : DbMigration
     {
         public override void Up()
         {
@@ -51,6 +51,8 @@ namespace IoTShop.Common.Logic.Migrations
                     {
                         ID = c.Int(nullable: false, identity: true),
                         UserID = c.String(maxLength: 128),
+                        Date = c.DateTime(nullable: false),
+                        Delivered = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserID)
@@ -63,13 +65,13 @@ namespace IoTShop.Common.Logic.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         DeviceID = c.Int(nullable: false),
                         UserID = c.String(maxLength: 128),
-                        Aantal = c.Int(nullable: false),
+                        Quantity = c.Int(nullable: false),
                         OrderLine_ID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Devices", t => t.DeviceID, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserID)
                 .ForeignKey("dbo.OrderLines", t => t.OrderLine_ID)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserID)
                 .Index(t => t.DeviceID)
                 .Index(t => t.UserID)
                 .Index(t => t.OrderLine_ID);
@@ -180,11 +182,11 @@ namespace IoTShop.Common.Logic.Migrations
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.OrderLines", "UserID", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Orders", "OrderLine_ID", "dbo.OrderLines");
             DropForeignKey("dbo.Orders", "UserID", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Orders", "OrderLine_ID", "dbo.OrderLines");
             DropForeignKey("dbo.Orders", "DeviceID", "dbo.Devices");
             DropForeignKey("dbo.DevicesOS", "OSId", "dbo.OS");
             DropForeignKey("dbo.DevicesOS", "DeviceId", "dbo.Devices");

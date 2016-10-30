@@ -7,13 +7,13 @@ namespace IoTShop.Common.Logic.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class RenameToQuantity : IMigrationMetadata
+    public sealed partial class initdb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RenameToQuantity));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initdb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201603201509562_RenameToQuantity"; }
+            get { return "201610301320216_initdb"; }
         }
         
         string IMigrationMetadata.Source
